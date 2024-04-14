@@ -1,0 +1,93 @@
+/* NavigationBar */
+.soicalImg {
+  width: 25px;
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+.navigationBar {
+  background-color: #ff8400!important;
+}
+.navimg {
+  position: relative; top: -20px;
+  z-index: 1;
+  width: 100%;
+}
+.headingImg {
+  position: relative; top: -50px;
+  width: 100%;
+}
+.brandHeading {
+  font-size: 30px!important;
+  color: white!important;
+}
+
+/* Homepage */
+.headingText {
+  font-size: 35px;
+  text-align: center;
+  position: relative; top: -200px;
+  color: white;
+}
+@media (min-width: 350px) {
+  .headingText {
+    font-size: 50px;
+    position: relative; top: -250px;
+  }
+}
+@media (min-width: 475px) {
+  .headingImg {
+    position: relative; top: -75px;
+  }
+  .headingText {
+    font-size: 70px;
+    position: relative; top: -320px;
+  }
+}
+@media (min-width: 768px) {
+  .headingImg {
+    position: relative; top: -120px;
+  }
+  .headingText {
+    font-size: 100px;
+    position: relative; top: -500px;
+  }
+}
+@media (min-width: 992px) {
+  .headingImg {
+    position: relative; top: -120px;
+  }
+  .headingText {
+    font-size: 130px;
+    position: relative; top: -700px;
+  }
+}
+@media (min-width: 1200px) {
+  .headingImg {
+    position: relative; top: -150px;
+  }
+  .headingText {
+    font-size: 150px;
+    position: relative; top: -800px;
+  }
+}
+@media (min-width: 1400px) {
+  .headingText {
+    position: relative; top: -1000px;
+  }
+}
+@media (min-width: 1600px) {
+  .headingText {
+    position: relative; top: -1100px;
+  }
+}
+@media (min-width: 2000px) {
+  .headingImg {
+    position: relative; top: -270px;
+  }
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
