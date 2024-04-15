@@ -7,7 +7,7 @@ function NavigationBar() {
         <>
             <Navbar expand="md" className="mb-3 navigationBar">
                 <Container>
-                    <Navbar.Brand className="bebas-neue-regular brandHeading" href="#">Unplugged</Navbar.Brand>
+                    <Navbar.Brand className="bebas-neue-regular brandHeading" href="#">Unplugged Retreat</Navbar.Brand>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-md`}
@@ -16,7 +16,7 @@ function NavigationBar() {
                     >
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-                                Unplugged
+                                Unplugged Retreat
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>

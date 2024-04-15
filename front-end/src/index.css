@@ -1,4 +1,7 @@
 /* NavigationBar */
+.body {
+  background-color: black;
+}
 .soicalImg {
   width: 25px;
   margin-bottom: 3px;
@@ -28,10 +31,27 @@
   position: relative; top: -200px;
   color: white;
 }
+.headingSubtext {
+  font-size: 25px;
+  position: relative; top: -20px;
+}
+.homepageRowTwo {
+  position: relative; top: -130px!important;
+}
+.secondRowCard {
+  margin: 0px 0px 25px 0px
+}
+.homepageRowThree {
+  position: relative; top: -130px!important;
+}
+
 @media (min-width: 350px) {
   .headingText {
     font-size: 50px;
     position: relative; top: -250px;
+  }
+  .headingSubtext {
+    font-size: 35px;
   }
 }
 @media (min-width: 475px) {
@@ -42,14 +62,24 @@
     font-size: 70px;
     position: relative; top: -320px;
   }
+  .homepageRowTwo {
+    position: relative; top: -210px!important;
+  }
 }
 @media (min-width: 768px) {
   .headingImg {
-    position: relative; top: -120px;
+    position: relative; top: -118px;
   }
   .headingText {
     font-size: 100px;
     position: relative; top: -500px;
+  }
+  .headingSubtext {
+    font-size: 45px;
+    position: relative; top: -50px;
+  }
+  .homepageRowTwo {
+    position: relative; top: -400px!important;
   }
 }
 @media (min-width: 992px) {
@@ -60,6 +90,12 @@
     font-size: 130px;
     position: relative; top: -700px;
   }
+  .headingSubtext {
+    font-size: 55px;
+  }
+  .homepageRowTwo {
+    position: relative; top: -500px!important;
+  }
 }
 @media (min-width: 1200px) {
   .headingImg {
@@ -69,10 +105,16 @@
     font-size: 150px;
     position: relative; top: -800px;
   }
+  .homepageRowTwo {
+    position: relative; top: -600px!important;
+  }
 }
 @media (min-width: 1400px) {
   .headingText {
     position: relative; top: -1000px;
+  }
+  .headingSubtext {
+    font-size: 65px;
   }
 }
 @media (min-width: 1600px) {
