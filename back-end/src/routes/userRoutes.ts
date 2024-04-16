@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { createAdminUser, createUser, getUser, getallUsers, loginUser } from '../conrollers/userController';
+import { createAdminUser, createUser, getUser, getallUsers, loginUser, verify } from '../conrollers/userController';
 
 const router = Router();
 
 router.get('/', getallUsers);
 router.get('/:id', getUser);
-// router.post('/verify', verify)
+router.post('/verify', verify)
 router.post('/create-user', createUser);
 router.post('/create-admin', createAdminUser);
 router.post('/signin', loginUser);

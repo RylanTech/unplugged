@@ -90,11 +90,11 @@ export const loginUser: RequestHandler = async (req, res, next) => {
                 res.status(200).json(token);
             }
             else {
-                res.status(203).json('Invalid password');
+                res.status(203).json('Invalid password or username');
             }
         }
         else {
-            res.status(203).json('Invalid username');
+            res.status(203).json('Invalid username or username');
         }
     } catch {
         res.status(500).send()
