@@ -1,10 +1,14 @@
 import { Card, Container, Nav, NavDropdown, Navbar, Offcanvas, Row } from "react-bootstrap"
 import NavigationBar from "../Components/NavigationBar"
 import { Helmet } from 'react-helmet'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { HeaderContext } from "../Contexts/HeadingContext"
 
 function Homepage() {
     const [headings, setHeadings] = useState()
+    const [headerImage, setHeaderImage] = useState()
+
+    const { getHeaderImage } = useContext(HeaderContext)
 
     useEffect(() => {
         setHeadings([
@@ -25,6 +29,12 @@ function Homepage() {
                 "body": "Regular registration price is $165 - deadline is March 1st"
             },
         ])
+
+        async function settingHeader() {
+            let res = await getHeaderImage()
+            setHeaderImage(res.headingImage)
+        }
+        settingHeader()
     }, [])
 
     function mapThroughHeadings() {
@@ -53,7 +63,7 @@ function Homepage() {
             </Helmet>
             <NavigationBar />
             <img className="navimg" src="https://i.postimg.cc/9XtYKN8m/og3-removebg-preview.png" />
-            <img className="headingImg" src="https://images.unsplash.com/photo-1428988449731-1e5ccfb5b84f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+            <img className="headingImg" src={headerImage} />
             <Container>
                 <Row>
                     <div className="col-12 bebas-neue-regular headingText">

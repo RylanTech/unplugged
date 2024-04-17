@@ -3,6 +3,7 @@ import 'dotenv/config'
 import { userFactory } from "./user";
 import { subheadingFactory } from "./heading";
 import { HomepageNotesFactory } from "./homepageNotes";
+import { HeadingImageFactory } from "./headingImage";
 
 const dbName = process.env.DB_NAME || '';
 const username = process.env.DB_USER || '';
@@ -17,5 +18,6 @@ const sequelize = new Sequelize(dbName, username, password, {
 userFactory(sequelize);
 subheadingFactory(sequelize)
 HomepageNotesFactory(sequelize)
+HeadingImageFactory(sequelize)
 
 export const db = sequelize;

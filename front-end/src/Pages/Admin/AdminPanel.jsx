@@ -3,11 +3,17 @@ import NavigationBar from "../../Components/NavigationBar";
 import { UserContext } from "../../Contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Container, Form, Row } from "react-bootstrap";
+import { HeaderContext } from "../../Contexts/HeadingContext";
 
 function AdminPanel() {
-    const [headingImage, setHeadingImage] = useState("https://images.unsplash.com/photo-1428988449731-1e5ccfb5b84f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    const [headingImage, setHeadingImage] = useState("");
+    const [notes, setNotes] = useState();
+
+    const [noteTitle, setNoteTitle] = useState("")
+    const [noteBody, setNoteBody] = useState("")
 
     const { verify } = useContext(UserContext)
+    const { getHeaderImage, editHeaderImage, createNote, getNotes } = useContext(HeaderContext)
     let navigate = useNavigate()
 
     useEffect(() => {
@@ -18,7 +24,62 @@ function AdminPanel() {
             }
         }
         verifying()
+
+        async function gettingHeader() {
+            let res = await getHeaderImage()
+            setHeadingImage(res.headingImage)
+        }
+        gettingHeader()
+
+        async function gettingNotes() {
+            let res = await getNotes()
+            console.log(res)
+            setNotes(res)
+        }
+        gettingNotes()
     }, [])
+
+    async function changeImage() {
+        let newImage = {
+            headingImage: headingImage
+        }
+        await editHeaderImage(newImage)
+    }
+
+    async function addNote() {
+        let newNote = {
+            homepageNotesTitle: noteTitle,
+            homepageNotesBody: noteBody
+        }
+        let res = await createNote(newNote)
+        console.log(res)
+        window.location.reload()
+    }
+
+    function mapThroughNotes() {
+        if (notes) {
+            return notes.map((note) => {
+                return (
+                    <>
+                        <div className="col-12 col-md-6">
+                            <Card className="col-12 secondRowCard">
+                                <Card.Body>
+                                    <Card.Title>
+                                        {note.homepageNotesTitle}
+                                    </Card.Title>
+                                    {note.homepageNotesBody}
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    </>
+                )
+            })
+        } else {
+            return (
+                <>Loading...</>
+            )
+        }
+    }
 
     return (
         <>
@@ -30,25 +91,59 @@ function AdminPanel() {
                             <Row>
                                 <div className="col-12 col-md-6">
                                     <Card.Title>Heading Image (3:2)</Card.Title>
-                                    <br/>
+                                    <br />
                                     <Form.Group>
                                         <Form.Label>Image URL</Form.Label>
                                         <Form.Control
-                                        title="heading image"
-                                        className="col-12"
-                                        value={headingImage}/>
+                                            title="heading image"
+                                            className="col-12"
+                                            value={headingImage}
+                                            onChange={(e) => setHeadingImage(e.target.value)} />
                                     </Form.Group>
-                                    <br/>
-                                    <Button className="col-12">
+                                    <br />
+                                    <Button className="col-12" onClick={changeImage}>
                                         Change
                                     </Button>
-                                    <br/><br/>
+                                    <br /><br />
                                 </div>
                                 <div className="col-12 col-md-6">
                                     <Row>
-                                    <img className="col-12" src={headingImage}/>
+                                        <img className="col-12" src={headingImage} />
                                     </Row>
                                 </div>
+                            </Row>
+                        </Card.Body>
+                    </Card>
+                </Row>
+                <br />
+                <Row>
+                    <Card className="col-12">
+                        <Card.Body>
+                            <Card.Title>Notes</Card.Title>
+                            <Form.Group>
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control
+                                    value={noteTitle}
+                                    onChange={(e) => setNoteTitle(e.target.value)} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Body</Form.Label>
+                                <br />
+                                <textarea
+                                    rows={2}
+                                    cols={45}
+                                    value={noteBody}
+                                    onChange={(e) => setNoteBody(e.target.value)} />
+                            </Form.Group>
+                            <Button
+                                className="col-12"
+                                onClick={addNote}>
+                                Create
+                            </Button>
+                            <br />
+                            <br />
+                            <Row>
+                                {mapThroughNotes()}
                             </Row>
                         </Card.Body>
                     </Card>
